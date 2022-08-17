@@ -1,6 +1,6 @@
 $out_root/
 {
-  include crails/
+  include libcrails-xmlrpc/
 }
 
-export $out_root/libcrails-xmlrpc/$import.target
+export $out_root/crails/xmlrpc/$import.target
