@@ -2,7 +2,7 @@
 name: libcrails-xmlrpc
 version: 2.0.0
 summary: XML-RPC server and client for the crails framework
-license: BSD-C3
+license: BSD-3-Clause
 description-file: README.md
 url: https://github.com/crails-framework/libcrails-xmlrpc.git
 email: michael@unetresgrossebite.com

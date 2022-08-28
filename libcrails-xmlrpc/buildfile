@@ -1,10 +1,10 @@
 intf_libs = # Interface dependencies.
 impl_libs = # Implementation dependencies.
 import libs += libcrails%lib{crails}
+import libs += libcrails-controllers%lib{crails-controllers}
+import libs += libcrails-http-client%lib{crails-http-client}
 
-lib{crails-xmlrpc}: {hxx ixx txx cxx}{** -version} hxx{version} $impl_libs $intf_libs
-
-hxx{version}: in{version} $src_root/manifest
+lib{crails-xmlrpc}: {hxx ixx txx cxx}{**} $impl_libs $intf_libs
 
 hxx{export}@./: cxx.importable = false
 
@@ -15,7 +15,7 @@ cxx.poptions =+ "-I$out_root" "-I$src_root"
 
 lib{crails-xmlrpc}:
 {
-  cxx.export.poptions = "-I$out_root" "-I$src_root"
+  cxx.export.poptions = "-I$out_root/libcrails-xmlrpc" "-I$src_root/libcrails-xmlrpc"
   cxx.export.libs = $intf_libs
 }
 
@@ -29,6 +29,6 @@ else
 
 {hxx ixx txx}{*}:
 {
-  install         = include/crails/
+  install         = include/
   install.subdirs = true
 }
