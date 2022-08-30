@@ -1,8 +1,8 @@
 #ifndef  XMLRPC_CONTROLLER_HPP
 # define XMLRPC_CONTROLLER_HPP
 
-# include <controller.hpp>
-# include <params.hpp>
+# include <crails/controller.hpp>
+# include <crails/params.hpp>
 # include <boost/fusion/functional/invocation/invoke.hpp>
 # include <boost/fusion/container.hpp>
 # include "variable.hpp"

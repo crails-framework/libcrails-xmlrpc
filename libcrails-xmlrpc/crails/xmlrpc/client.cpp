@@ -1,6 +1,5 @@
 #include "client.hpp"
 #include "fault.hpp"
-#include "server.hpp"
 
 using namespace std;
 using namespace XmlRpc;
