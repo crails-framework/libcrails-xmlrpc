@@ -14,6 +14,7 @@ namespace XmlRpc
     struct IMethod
     {
       IMethod(const std::string& name) : name(name) {}
+      virtual ~IMethod() {}
 
       const std::string name;
       virtual void call(Crails::Params&) = 0;
@@ -94,9 +95,11 @@ namespace XmlRpc
     {
     }
 
+    virtual ~Controller() override {}
+
     void endpoint();
 
-    virtual bool must_protect_from_forgery() const { return false; }
+    virtual bool must_protect_from_forgery() const override { return false; }
 
   protected:
     void respond_with(const XmlRpc::Variable&);
