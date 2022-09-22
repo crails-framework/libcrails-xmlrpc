@@ -8,5 +8,5 @@ url: https://github.com/crails-framework/libcrails-xmlrpc.git
 email: michael@unetresgrossebite.com
 depends: * build2 >= 0.15.0
 depends: * bpkg >= 0.15.0
-depends: libboost-fusion >= 1.74
-depends: { libcrails libcrails-controllers libcrails-http-client } ^2.0.0
+depends: { libboost-fusion libboost-date-time libboost-lexical-cast } >= 1.74
+depends: { libcrails libcrails-controllers libcrails-http-client libdatatree } ^2.0.0

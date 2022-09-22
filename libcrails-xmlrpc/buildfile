@@ -1,8 +1,8 @@
-intf_libs = # Interface dependencies.
-impl_libs = # Implementation dependencies.
-import libs += libcrails%lib{crails}
-import libs += libcrails-controllers%lib{crails-controllers}
-import libs += libcrails-http-client%lib{crails-http-client}
+import libs = libboost-date-time%lib{boost_date_time} libboost-fusion%lib{boost_fusion} libboost-lexical-cast%lib{boost_lexical_cast}
+import intf_libs += libdatatree%lib{datatree}
+import intf_libs += libcrails%lib{crails}
+import intf_libs += libcrails-controllers%lib{crails-controllers}
+import intf_libs += libcrails-http-client%lib{crails-http-client}
 
 lib{crails-xmlrpc}: {hxx ixx txx cxx}{**} $impl_libs $intf_libs
 
