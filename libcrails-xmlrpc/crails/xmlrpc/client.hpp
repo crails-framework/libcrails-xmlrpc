@@ -25,12 +25,15 @@ namespace XmlRpc
       Crails::HttpRequest  request{boost::beast::http::verb::post, endpoint.target, 11};
       Crails::HttpResponse response;
       DataTree response_data;
+      char buffer_body[body.length()];
 
+      body.copy(buffer_body, body.length());
       request.set(Crails::HttpHeader::connection,   "close");
       request.set(Crails::HttpHeader::user_agent,   "crails-xmlrpc/0.2");
       request.set(Crails::HttpHeader::content_type, "text/xml");
       request.content_length(body.length());
-      request.body() = body;
+      request.body().data = buffer_body;
+      request.body().size = body.length();
       client.connect();
       response = client.query(request);
       if (static_cast<short>(response.result()) >= 400)
