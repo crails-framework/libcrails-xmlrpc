@@ -21,19 +21,16 @@ namespace XmlRpc
     template<typename ...Args>
     Variable call(const std::string& method_name, Args... args)
     {
-      std::string          body = xml_for_method_call(method_name, args...);
-      Crails::HttpRequest  request{boost::beast::http::verb::post, endpoint.target, 11};
-      Crails::HttpResponse response;
+      std::string              body = xml_for_method_call(method_name, args...);
+      Crails::Client::Request  request{boost::beast::http::verb::post, endpoint.target, 11};
+      Crails::Client::Response response;
       DataTree response_data;
-      char buffer_body[body.length()];
 
-      body.copy(buffer_body, body.length());
       request.set(Crails::HttpHeader::connection,   "close");
       request.set(Crails::HttpHeader::user_agent,   "crails-xmlrpc/0.2");
       request.set(Crails::HttpHeader::content_type, "text/xml");
       request.content_length(body.length());
-      request.body().data = buffer_body;
-      request.body().size = body.length();
+      request.body() = body;
       client.connect();
       response = client.query(request);
       if (static_cast<short>(response.result()) >= 400)
